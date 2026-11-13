@@ -1,0 +1,1366 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lutong Pinoy | Filipino Recipes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --green: #315c42;
+  --dark: #203d2c;
+  --cream: #faf8f1;
+  --orange: #d88a48;
+  --text: #292d27;
+  --muted: #777b70;
+  --white: #fff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+.container {
+  width: min(1160px, 90%);
+  margin: auto;
+}
+
+/* NAVIGATION */
+header {
+  background: var(--cream);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #eae7dd;
+}
+
+.navbar {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  font-weight: 800;
+  color: var(--green);
+  text-decoration: none;
+}
+
+.logo span { color: var(--orange); }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.nav-links a:hover { color: var(--orange); }
+
+.nav-button {
+  background: var(--green);
+  color: white;
+  border: 0;
+  border-radius: 30px;
+  padding: 12px 22px;
+  font-weight: 600;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  font-size: 26px;
+}
+
+/* HERO */
+.hero {
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(22,35,24,.88), rgba(22,35,24,.30)),
+    url('https://images.unsplash.com/photo-1547592180-85f173990554?w=1800&q=85') center/cover;
+}
+
+.hero-content {
+  color: white;
+  max-width: 620px;
+  padding: 90px 0;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #f0bd81;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(45px, 7vw, 76px);
+  line-height: 1.08;
+  margin-bottom: 22px;
+}
+
+.hero p {
+  color: #eeeae1;
+  line-height: 1.8;
+  max-width: 480px;
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+.primary-button {
+  display: inline-block;
+  padding: 15px 27px;
+  border-radius: 30px;
+  text-decoration: none;
+  background: var(--orange);
+  color: white;
+  font-weight: 700;
+  border: 0;
+  transition: .25s;
+}
+
+.primary-button:hover {
+  background: #bd7137;
+  transform: translateY(-2px);
+}
+
+/* INTRO */
+.intro {
+  padding: 85px 0 55px;
+  text-align: center;
+}
+
+.section-label {
+  color: var(--orange);
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 43px);
+  color: var(--dark);
+  margin-bottom: 15px;
+}
+
+.section-description {
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: auto;
+  font-size: 14px;
+}
+
+/* FEATURED */
+.featured {
+  padding: 35px 0 90px;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 45px;
+  align-items: center;
+}
+
+.featured-image {
+  width: 100%;
+  height: 410px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.featured-text .section-title { font-size: 38px; }
+
+.featured-text p {
+  color: var(--muted);
+  line-height: 1.9;
+  margin: 18px 0 25px;
+}
+
+.featured-tag {
+  color: var(--orange);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+/* RECIPE SECTION */
+.recipes-section {
+  padding: 85px 0;
+  background: #f1efe6;
+}
+
+.recipes-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 35px;
+}
+
+.recipes-heading .section-title { margin-bottom: 0; }
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1px solid #e5e1d5;
+  border-radius: 30px;
+  padding: 12px 18px;
+  width: 280px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  font-size: 13px;
+}
+
+.categories {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 35px;
+}
+
+.category-btn {
+  background: transparent;
+  border: 1px solid #d8d5ca;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #62665c;
+  transition: .2s;
+}
+
+.category-btn.active,
+.category-btn:hover {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 27px;
+}
+
+.recipe-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: .25s;
+  cursor: pointer;
+  border: 1px solid #eeece4;
+}
+
+.recipe-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.08);
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  background: #e7e2d5;
+}
+
+.recipe-info { padding: 21px; }
+
+.recipe-category {
+  font-size: 11px;
+  color: var(--orange);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.recipe-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  margin: 9px 0;
+  color: var(--dark);
+}
+
+.recipe-info p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  min-height: 44px;
+}
+
+.recipe-meta {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+  margin-top: 17px;
+  color: #777b70;
+  font-size: 12px;
+}
+
+.no-results {
+  display: none;
+  text-align: center;
+  padding: 60px 10px;
+  color: var(--muted);
+}
+
+/* REGIONAL SECTION */
+.regional {
+  padding: 90px 0;
+}
+
+.region-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 35px;
+}
+
+.region-card {
+  height: 210px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.region-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,.8));
+}
+
+.region-card div {
+  position: absolute;
+  bottom: 20px;
+  left: 18px;
+  color: white;
+}
+
+.region-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+}
+
+.region-card p {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #eee;
+}
+
+/* NEWSLETTER */
+.newsletter {
+  background: var(--green);
+  color: white;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.newsletter h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.newsletter p {
+  color: #e0e8df;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.newsletter-form {
+  display: flex;
+  max-width: 440px;
+  margin: 28px auto 0;
+  background: white;
+  border-radius: 35px;
+  padding: 5px;
+}
+
+.newsletter-form input {
+  border: none;
+  outline: none;
+  flex: 1;
+  min-width: 0;
+  padding: 12px 18px;
+  border-radius: 30px;
+}
+
+.newsletter-form button {
+  border: none;
+  border-radius: 30px;
+  background: var(--orange);
+  color: white;
+  padding: 12px 22px;
+  font-weight: 700;
+}
+
+#subscribe-message {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+/* FOOTER */
+footer {
+  background: #1d3325;
+  color: white;
+  padding: 45px 0 25px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding-bottom: 30px;
+}
+
+.footer-brand h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 27px;
+  margin-bottom: 12px;
+}
+
+.footer-brand p {
+  color: #c3cec4;
+  font-size: 13px;
+  line-height: 1.8;
+  max-width: 300px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #e2e9e2;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.copyright {
+  border-top: 1px solid #405446;
+  padding-top: 22px;
+  color: #b8c4b9;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* RECIPE MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 200;
+  inset: 0;
+  background: rgba(0,0,0,.7);
+  padding: 25px;
+  overflow-y: auto;
+}
+
+.modal.show {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.modal-content {
+  background: var(--cream);
+  max-width: 760px;
+  width: 100%;
+  margin: auto;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+}
+
+.modal-image {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: 0;
+  border-radius: 50%;
+  background: white;
+  width: 38px;
+  height: 38px;
+  font-size: 22px;
+}
+
+.modal-body { padding: 32px; }
+
+.modal-body h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 35px;
+  color: var(--dark);
+  margin: 8px 0 12px;
+}
+
+.modal-description {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.modal-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 23px;
+  margin: 25px 0 12px;
+  color: var(--green);
+}
+
+.modal-body ul, .modal-body ol {
+  padding-left: 22px;
+  line-height: 2;
+  color: #565c52;
+  font-size: 14px;
+}
+
+@media(max-width: 850px) {
+  .recipe-grid { grid-template-columns: repeat(2, 1fr); }
+  .region-grid { grid-template-columns: repeat(2, 1fr); }
+  .featured-grid { grid-template-columns: 1fr; }
+  .featured-image { height: 340px; }
+  .recipes-heading { align-items: flex-start; flex-direction: column; gap: 20px; }
+  .search-box { width: 100%; }
+}
+
+@media(max-width: 600px) {
+  .navbar { height: 68px; }
+  .menu-toggle { display: block; color: var(--green); }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    width: 100%;
+    background: var(--cream);
+    padding: 25px 5%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    border-top: 1px solid #eee;
+  }
+  .nav-links.open { display: flex; }
+  .nav-button { display: none; }
+  .hero { min-height: 520px; }
+  .hero-content { padding: 65px 0; }
+  .recipe-grid { grid-template-columns: 1fr; }
+  .region-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .region-card { height: 170px; }
+  .intro { padding: 65px 0 35px; }
+  .recipes-section, .regional { padding: 65px 0; }
+  .newsletter h2 { font-size: 29px; }
+  .modal { padding: 10px; }
+  .modal-image { height: 220px; }
+  .modal-body { padding: 22px; }
+  .modal-body h2 { font-size: 29px; }
+  .footer-content { flex-direction: column; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container navbar">
+    <a href="#" class="logo">Lutong<span>Pinoy.</span></a>
+
+    <button class="menu-toggle" id="menuToggle">☰</button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#">Home</a></li>
+      <li><a href="#recipes">Recipes</a></li>
+      <li><a href="#regional">Regional Dishes</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+
+    <a href="#recipes"><button class="nav-button">Explore Recipes ↗</button></a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="eyebrow">A Taste of Filipino Heritage</div>
+      <h1>Good Food.<br>Good Memories.</h1>
+      <p>
+        Discover the flavors of Filipino home cooking.
+        From everyday ulam to traditional favorites,
+        find recipes that bring everyone together.
+      </p>
+      <a href="#recipes" class="primary-button">Explore Recipes →</a>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro container" id="about">
+  <div class="section-label">Welcome to Lutong Pinoy</div>
+  <h2 class="section-title">Made with Love, Served with Pride</h2>
+  <p class="section-description">
+    Filipino food is more than just a meal. It is a celebration
+    of family, culture, and tradition. Explore easy-to-follow
+    recipes inspired by kitchens all across the Philippines.
+  </p>
+</section>
+
+<!-- FEATURED -->
+<section class="featured container">
+  <div class="featured-grid">
+    <img class="featured-image"
+      src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=900&q=85"
+      alt="Filipino-style home cooked meal">
+
+    <div class="featured-text">
+      <div class="featured-tag">Editor's Pick · Featured Recipe</div>
+      <h2 class="section-title">The Comfort of a Home-Cooked Meal</h2>
+      <p>
+        Nothing beats a freshly prepared Filipino meal.
+        Whether it's a warm bowl of sinigang, savory adobo,
+        or a plate of crispy lumpia, every dish tells a story.
+      </p>
+      <a href="#recipes" class="primary-button">Find Your Next Recipe →</a>
+    </div>
+  </div>
+</section>
+
+<!-- RECIPES -->
+<section class="recipes-section" id="recipes">
+  <div class="container">
+
+    <div class="recipes-heading">
+      <div>
+        <div class="section-label">From Our Kitchen</div>
+        <h2 class="section-title">Explore Our Recipes</h2>
+      </div>
+
+      <div class="search-box">
+        <span>⌕</span>
+        <input type="text" id="searchInput"
+          placeholder="Search Filipino recipes...">
+      </div>
+    </div>
+
+    <div class="categories">
+      <button class="category-btn active" data-category="All">All Recipes</button>
+      <button class="category-btn" data-category="Main Dish">Main Dishes</button>
+      <button class="category-btn" data-category="Soup">Soups</button>
+      <button class="category-btn" data-category="Dessert">Desserts</button>
+      <button class="category-btn" data-category="Snacks">Snacks</button>
+    </div>
+
+    <div class="recipe-grid" id="recipeGrid"></div>
+
+    <div class="no-results" id="noResults">
+      <h3>No recipes found.</h3>
+      <p>Try another search or category.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- REGIONAL -->
+<section class="regional container" id="regional">
+  <div class="section-label">Flavors Across the Islands</div>
+  <h2 class="section-title">Discover Regional Filipino Cuisine</h2>
+  <p class="section-description" style="margin:0">
+    Every region has its own unique flavors, ingredients, and cooking traditions.
+  </p>
+
+  <div class="region-grid">
+    <div class="region-card"
+      style="background-image:url('https://images.unsplash.com/photo-1547592180-85f173990554?w=600')">
+      <div><h3>Ilocano</h3><p>Bold and traditional flavors</p></div>
+    </div>
+
+    <div class="region-card"
+      style="background-image:url('https://images.unsplash.com/photo-1563245372-f21724e3856d?w=600')">
+      <div><h3>Pangasinan</h3><p>Local favorites and seafood</p></div>
+    </div>
+
+    <div class="region-card"
+      style="background-image:url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600')">
+      <div><h3>Kapampangan</h3><p>Rich and flavorful dishes</p></div>
+    </div>
+
+    <div class="region-card"
+      style="background-image:url('https://images.unsplash.com/photo-1547592180-85f173990554?w=600')">
+      <div><h3>Bicolano</h3><p>Known for coconut and spice</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <h2>A Little Taste of Home</h2>
+  <p>Get inspired with delicious Filipino recipes and cooking ideas.</p>
+
+  <form class="newsletter-form" id="newsletterForm">
+    <input type="email" id="emailInput"
+      placeholder="Enter your email address" required>
+    <button type="submit">Subscribe</button>
+  </form>
+  <div id="subscribe-message"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h2>Lutong Pinoy.</h2>
+        <p>
+          Celebrating Filipino home cooking, one recipe at a time.
+          Bringing the taste of home closer to everyone.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#">Home</a>
+        <a href="#recipes">Recipes</a>
+        <a href="#regional">Regional Cuisine</a>
+        <a href="#about">About Us</a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      © 2026 Lutong Pinoy. Made with ♥ for Filipino food lovers.
+    </div>
+  </div>
+</footer>
+
+<!-- RECIPE DETAILS MODAL -->
+<div class="modal" id="recipeModal">
+  <div class="modal-content">
+    <button class="close-modal" id="closeModal">×</button>
+    <img class="modal-image" id="modalImage" src="" alt="">
+    <div class="modal-body">
+      <div class="recipe-category" id="modalCategory"></div>
+      <h2 id="modalTitle"></h2>
+      <p class="modal-description" id="modalDescription"></p>
+
+      <div class="recipe-meta" style="border:0">
+        <span id="modalTime"></span>
+        <span id="modalServings"></span>
+      </div>
+
+      <h3>Ingredients</h3>
+      <ul id="modalIngredients"></ul>
+
+      <h3>Cooking Instructions</h3>
+      <ol id="modalInstructions"></ol>
+    </div>
+  </div>
+</div>
+
+<script>
+// SAMPLE FILIPINO RECIPES
+const recipes = [
+{
+ name:"Chicken Adobo",
+ category:"Main Dish",
+ region:"Luzon",
+ time:"45 minutes",
+ servings:"4 servings",
+ image:"https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=700&q=85",
+ description:"A classic Filipino dish made with chicken simmered in soy sauce, vinegar, garlic, and spices.",
+ ingredients:[
+ "1 kg chicken pieces",
+ "1/2 cup soy sauce",
+ "1/2 cup vinegar",
+ "1 cup water",
+ "1 whole garlic, crushed",
+ "2 bay leaves",
+ "1 tsp whole peppercorns",
+ "1 tbsp cooking oil"
+ ],
+ instructions:[
+ "Combine chicken, soy sauce, and crushed garlic in a bowl. Marinate for at least 20 minutes.",
+ "Heat oil in a pot and lightly brown the chicken.",
+ "Pour in the marinade, vinegar, water, bay leaves, and peppercorns.",
+ "Bring to a boil. Avoid stirring immediately after adding the vinegar.",
+ "Lower the heat and simmer for 30 minutes or until the chicken is tender.",
+ "Serve hot with steamed rice."
+ ]
+},
+{
+ name:"Sinigang na Baboy",
+ category:"Soup",
+ region:"Luzon",
+ time:"1 hour",
+ servings:"5 servings",
+ image:"https://images.unsplash.com/photo-1547592180-85f173990554?w=700&q=85",
+ description:"A comforting sour pork soup with fresh vegetables and a flavorful tamarind broth.",
+ ingredients:[
+ "500g pork belly or ribs",
+ "1 packet tamarind soup mix",
+ "2 tomatoes, quartered",
+ "1 onion, sliced",
+ "1 radish, sliced",
+ "1 eggplant, sliced",
+ "1 bunch kangkong",
+ "8 cups water",
+ "Fish sauce to taste"
+ ],
+ instructions:[
+ "Boil pork in water with tomatoes and onion until tender.",
+ "Add the tamarind soup mix and stir.",
+ "Add radish and eggplant. Cook until tender.",
+ "Season with fish sauce.",
+ "Add kangkong and cook for another 2 minutes.",
+ "Serve hot with rice and fish sauce."
+ ]
+},
+{
+ name:"Kare-Kare",
+ category:"Main Dish",
+ region:"Kapampangan",
+ time:"2 hours",
+ servings:"6 servings",
+ image:"https://images.unsplash.com/photo-1547592180-85f173990554?w=700&q=85",
+ description:"A rich Filipino stew with a creamy peanut sauce, vegetables, and tender meat.",
+ ingredients:[
+ "1 kg oxtail",
+ "1/2 cup peanut butter",
+ "1/4 cup ground toasted rice",
+ "1 bunch pechay",
+ "2 eggplants",
+ "1 banana heart",
+ "1/2 cup annatto water",
+ "Salt to taste",
+ "Bagoong for serving"
+ ],
+ instructions:[
+ "Boil oxtail until tender. Reserve the broth.",
+ "In a pot, combine peanut butter, ground rice, and annatto water.",
+ "Add the meat and enough reserved broth to create a thick sauce.",
+ "Simmer until the sauce is creamy.",
+ "Add vegetables and cook until tender.",
+ "Serve with bagoong and steamed rice."
+ ]
+},
+{
+ name:"Bicol Express",
+ category:"Main Dish",
+ region:"Bicol",
+ time:"50 minutes",
+ servings:"4 servings",
+ image:"https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=700&q=85",
+ description:"A spicy pork dish cooked in coconut milk, chilies, and shrimp paste.",
+ ingredients:[
+ "500g pork belly, sliced",
+ "2 cups coconut milk",
+ "1 cup coconut cream",
+ "5 green chilies",
+ "5 red chilies",
+ "1 onion, chopped",
+ "4 cloves garlic",
+ "2 tbsp shrimp paste"
+ ],
+ instructions:[
+ "Sauté garlic and onion in a pot.",
+ "Add pork and cook until lightly browned.",
+ "Stir in shrimp paste.",
+ "Pour in coconut milk and simmer until pork is tender.",
+ "Add chilies and coconut cream.",
+ "Cook until thick and serve with rice."
+ ]
+},
+{
+ name:"Pancit Canton",
+ category:"Main Dish",
+ region:"Luzon",
+ time:"35 minutes",
+ servings:"4 servings",
+ image:"https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=700&q=85",
+ description:"Stir-fried egg noodles with vegetables, meat, and a savory sauce.",
+ ingredients:[
+ "400g pancit canton noodles",
+ "200g chicken breast",
+ "1 carrot, sliced",
+ "1/2 cabbage, shredded",
+ "1 onion",
+ "3 cloves garlic",
+ "3 tbsp soy sauce",
+ "2 cups chicken broth"
+ ],
+ instructions:[
+ "Sauté garlic and onion in oil.",
+ "Add chicken and cook thoroughly.",
+ "Add carrots and cabbage.",
+ "Pour in chicken broth and soy sauce.",
+ "Add noodles and toss until they absorb the sauce.",
+ "Serve with calamansi."
+ ]
+},
+{
+ name:"Lumpiang Shanghai",
+ category:"Snacks",
+ region:"Luzon",
+ time:"45 minutes",
+ servings:"30 pieces",
+ image:"https://images.unsplash.com/photo-1544025162-d76694265947?w=700&q=85",
+ description:"Crispy spring rolls filled with seasoned ground pork and vegetables.",
+ ingredients:[
+ "500g ground pork",
+ "1 carrot, finely chopped",
+ "1 onion, minced",
+ "2 cloves garlic",
+ "1 egg",
+ "30 spring roll wrappers",
+ "Salt and pepper",
+ "Cooking oil"
+ ],
+ instructions:[
+ "Mix pork, carrots, onion, garlic, egg, salt, and pepper.",
+ "Place a spoonful of filling on each wrapper.",
+ "Roll tightly and seal the edges with water.",
+ "Heat oil in a pan.",
+ "Fry the rolls until golden brown and fully cooked.",
+ "Drain excess oil and serve with sweet chili sauce."
+ ]
+},
+{
+ name:"Leche Flan",
+ category:"Dessert",
+ region:"Luzon",
+ time:"1 hour",
+ servings:"6 servings",
+ image:"https://images.unsplash.com/photo-1488477181946-6428a0291777?w=700&q=85",
+ description:"A smooth and creamy Filipino custard dessert topped with golden caramel.",
+ ingredients:[
+ "10 egg yolks",
+ "1 can condensed milk",
+ "1 can evaporated milk",
+ "1 tsp vanilla extract",
+ "1 cup sugar"
+ ],
+ instructions:[
+ "Melt sugar in a pan until golden caramel forms.",
+ "Pour caramel into llanera molds.",
+ "Mix egg yolks, condensed milk, evaporated milk, and vanilla.",
+ "Strain the mixture into the molds.",
+ "Cover with foil and steam for 30–40 minutes.",
+ "Cool completely, refrigerate, and unmold before serving."
+ ]
+},
+{
+ name:"Puto",
+ category:"Dessert",
+ region:"Luzon",
+ time:"35 minutes",
+ servings:"12 pieces",
+ image:"https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=700&q=85",
+ description:"Soft and fluffy Filipino steamed rice cakes, perfect with coffee or savory dishes.",
+ ingredients:[
+ "2 cups rice flour",
+ "3/4 cup sugar",
+ "1 tbsp baking powder",
+ "1 1/2 cups milk",
+ "1 egg",
+ "1/4 cup melted butter",
+ "Cheese slices"
+ ],
+ instructions:[
+ "Combine rice flour, sugar, and baking powder.",
+ "Add milk, egg, and melted butter.",
+ "Mix until smooth.",
+ "Pour into greased puto molds.",
+ "Top with cheese.",
+ "Steam for 15–20 minutes until cooked."
+ ]
+},
+{
+ name:"Laing",
+ category:"Main Dish",
+ region:"Bicol",
+ time:"1 hour",
+ servings:"4 servings",
+ image:"https://images.unsplash.com/photo-1547592180-85f173990554?w=700&q=85",
+ description:"Dried taro leaves slowly cooked in coconut milk with chilies and aromatics.",
+ ingredients:[
+ "100g dried taro leaves",
+ "2 cups coconut milk",
+ "1 cup coconut cream",
+ "100g pork, sliced",
+ "2 tbsp shrimp paste",
+ "1 onion",
+ "4 cloves garlic",
+ "Ginger",
+ "Red chilies"
+ ],
+ instructions:[
+ "Sauté garlic, onion, ginger, and pork.",
+ "Add shrimp paste and coconut milk.",
+ "Arrange dried taro leaves on top without stirring.",
+ "Simmer gently until leaves soften.",
+ "Add coconut cream and chilies.",
+ "Cook until thick and the leaves are tender."
+ ]
+},
+{
+ name:"Tinolang Manok",
+ category:"Soup",
+ region:"Luzon",
+ time:"50 minutes",
+ servings:"5 servings",
+ image:"https://images.unsplash.com/photo-1547592180-85f173990554?w=700&q=85",
+ description:"A light chicken soup with ginger, green papaya, and malunggay leaves.",
+ ingredients:[
+ "1 kg chicken",
+ "1 green papaya",
+ "1 thumb-sized ginger",
+ "1 onion",
+ "3 cloves garlic",
+ "1 bunch malunggay",
+ "6 cups water",
+ "Fish sauce"
+ ],
+ instructions:[
+ "Sauté ginger, garlic, and onion.",
+ "Add chicken and cook until lightly browned.",
+ "Season with fish sauce.",
+ "Pour in water and simmer until chicken is tender.",
+ "Add green papaya and cook until soft.",
+ "Add malunggay leaves before serving."
+ ]
+},
+{
+ name:"Pancit Malabon",
+ category:"Main Dish",
+ region:"Malabon",
+ time:"50 minutes",
+ servings:"5 servings",
+ image:"https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=700&q=85",
+ description:"Thick rice noodles topped with seafood, pork, crushed chicharon, and savory sauce.",
+ ingredients:[
+ "500g thick rice noodles",
+ "200g shrimp",
+ "150g squid",
+ "100g smoked fish flakes",
+ "1/2 cup annatto water",
+ "3 cloves garlic",
+ "Fish sauce",
+ "Chicharon",
+ "Boiled eggs"
+ ],
+ instructions:[
+ "Cook rice noodles according to package instructions.",
+ "Sauté garlic and seafood.",
+ "Add annatto water and season with fish sauce.",
+ "Prepare a thick sauce using seafood broth.",
+ "Toss noodles with the sauce.",
+ "Top with seafood, eggs, chicharon, and smoked fish."
+ ]
+},
+{
+ name:"Turon",
+ category:"Snacks",
+ region:"Luzon",
+ time:"25 minutes",
+ servings:"10 pieces",
+ image:"https://images.unsplash.com/photo-1488477181946-6428a0291777?w=700&q=85",
+ description:"Golden fried banana rolls with caramelized sugar and a crispy wrapper.",
+ ingredients:[
+ "5 ripe saba bananas",
+ "10 spring roll wrappers",
+ "1/2 cup brown sugar",
+ "1 cup jackfruit strips",
+ "Cooking oil"
+ ],
+ instructions:[
+ "Slice bananas lengthwise.",
+ "Place banana and jackfruit on each wrapper.",
+ "Sprinkle with brown sugar.",
+ "Roll tightly and seal with water.",
+ "Fry until golden and crispy.",
+ "Serve warm."
+ ]
+},
+{
+ name:"Pinakbet",
+ category:"Main Dish",
+ region:"Ilocos",
+ time:"40 minutes",
+ servings:"4 servings",
+ image:"https://images.unsplash.com/photo-1547592180-85f173990554?w=700&q=85",
+ description:"An Ilocano vegetable dish cooked with bagoong, tomatoes, and pork.",
+ ingredients:[
+ "1 cup squash",
+ "1 cup eggplant",
+ "1 cup okra",
+ "1 cup ampalaya",
+ "1 cup sitaw",
+ "150g pork",
+ "2 tomatoes",
+ "2 tbsp bagoong",
+ "1 onion"
+ ],
+ instructions:[
+ "Sauté pork until lightly browned.",
+ "Add onion and tomatoes.",
+ "Stir in bagoong.",
+ "Add squash and a little water.",
+ "Add remaining vegetables.",
+ "Cover and cook until vegetables are tender."
+ ]
+},
+{
+ name:"Halo-Halo",
+ category:"Dessert",
+ region:"Luzon",
+ time:"15 minutes",
+ servings:"2 servings",
+ image:"https://images.unsplash.com/photo-1488477181946-6428a0291777?w=700&q=85",
+ description:"A refreshing Filipino dessert made with crushed ice, milk, sweetened fruits, and colorful toppings.",
+ ingredients:[
+ "2 cups crushed ice",
+ "1/2 cup evaporated milk",
+ "2 tbsp sweetened banana",
+ "2 tbsp red beans",
+ "2 tbsp nata de coco",
+ "2 tbsp kaong",
+ "Leche flan",
+ "Ube halaya",
+ "Ube ice cream"
+ ],
+ instructions:[
+ "Place sweetened fruits and beans in a tall glass.",
+ "Add crushed ice until the glass is full.",
+ "Pour evaporated milk over the ice.",
+ "Top with leche flan and ube halaya.",
+ "Add a scoop of ube ice cream.",
+ "Mix everything together before eating."
+ ]
+},
+{
+ name:"Pangasinan Pigar-Pigar",
+ category:"Main Dish",
+ region:"Pangasinan",
+ time:"35 minutes",
+ servings:"3 servings",
+ image:"https://images.unsplash.com/photo-1544025162-d76694265947?w=700&q=85",
+ description:"A popular Pangasinan specialty of thinly sliced beef fried with cabbage and onions.",
+ ingredients:[
+ "500g beef sirloin, thinly sliced",
+ "1/2 cabbage, sliced",
+ "2 onions, sliced",
+ "4 cloves garlic",
+ "Salt and pepper",
+ "Cooking oil",
+ "Calamansi"
+ ],
+ instructions:[
+ "Season the beef with salt and pepper.",
+ "Heat oil in a pan over medium-high heat.",
+ "Fry beef in batches until browned.",
+ "Add garlic and onions.",
+ "Add cabbage and stir-fry until slightly tender.",
+ "Serve hot with calamansi and rice."
+ ]
+}
+];
+
+// DISPLAY RECIPE CARDS
+const recipeGrid = document.getElementById("recipeGrid");
+
+function displayRecipes(category = "All", search = "") {
+  const filtered = recipes.filter(recipe => {
+    const matchesCategory =
+      category === "All" || recipe.category === category;
+
+    const matchesSearch =
+      recipe.name.toLowerCase().includes(search.toLowerCase()) ||
+      recipe.description.toLowerCase().includes(search.toLowerCase()) ||
+      recipe.region.toLowerCase().includes(search.toLowerCase());
+
+    return matchesCategory && matchesSearch;
+  });
+
+  recipeGrid.innerHTML = "";
+
+  document.getElementById("noResults").style.display =
+    filtered.length ? "none" : "block";
+
+  filtered.forEach(recipe => {
+    const originalIndex = recipes.indexOf(recipe);
+
+    recipeGrid.innerHTML += `
+      <article class="recipe-card" onclick="openRecipe(${originalIndex})">
+        <img src="${recipe.image}" alt="${recipe.name}" loading="lazy">
+        <div class="recipe-info">
+          <div class="recipe-category">${recipe.category} · ${recipe.region}</div>
+          <h3>${recipe.name}</h3>
+          <p>${recipe.description}</p>
+          <div class="recipe-meta">
+            <span>◷ ${recipe.time}</span>
+            <span>♧ ${recipe.servings}</span>
+          </div>
+        </div>
+      </article>
+    `;
+  });
+}
+
+// CATEGORY FILTERS
+let activeCategory = "All";
+
+document.querySelectorAll(".category-btn").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".category-btn").forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+    button.classList.add("active");
+    activeCategory = button.dataset.category;
+
+    displayRecipes(
+      activeCategory,
+      document.getElementById("searchInput").value
+    );
+  });
+});
+
+// SEARCH
+document.getElementById("searchInput").addEventListener("input", e => {
+  displayRecipes(activeCategory, e.target.value);
+});
+
+// OPEN RECIPE DETAILS
+function openRecipe(index) {
+  const recipe = recipes[index];
+
+  document.getElementById("modalImage").src = recipe.image;
+  document.getElementById("modalImage").alt = recipe.name;
+  document.getElementById("modalCategory").textContent =
+    recipe.category + " · " + recipe.region;
+  document.getElementById("modalTitle").textContent = recipe.name;
+  document.getElementById("modalDescription").textContent =
+    recipe.description;
+  document.getElementById("modalTime").textContent =
+    "◷ " + recipe.time;
+  document.getElementById("modalServings").textContent =
+    "♧ " + recipe.servings;
+
+  const ingredients = document.getElementById("modalIngredients");
+  ingredients.innerHTML = "";
+
+  recipe.ingredients.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    ingredients.appendChild(li);
+  });
+
+  const instructions = document.getElementById("modalInstructions");
+  instructions.innerHTML = "";
+
+  recipe.instructions.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    instructions.appendChild(li);
+  });
+
+  document.getElementById("recipeModal").classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+
+// CLOSE MODAL
+function closeRecipe() {
+  document.getElementById("recipeModal").classList.remove("show");
+  document.body.style.overflow = "";
+}
+
+document.getElementById("closeModal").addEventListener("click", closeRecipe);
+
+document.getElementById("recipeModal").addEventListener("click", e => {
+  if (e.target.id === "recipeModal") closeRecipe();
+});
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeRecipe();
+});
+
+// MOBILE NAVIGATION
+document.getElementById("menuToggle").addEventListener("click", () => {
+  document.getElementById("navLinks").classList.toggle("open");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    document.getElementById("navLinks").classList.remove("open");
+  });
+});
+
+// DEMO NEWSLETTER FORM
+document.getElementById("newsletterForm").addEventListener("submit", e => {
+  e.preventDefault();
+
+  const email = document.getElementById("emailInput").value;
+
+  document.getElementById("subscribe-message").textContent =
+    "Thank you for subscribing! Welcome to Lutong Pinoy.";
+
+  e.target.reset();
+});
+
+// INITIALIZE WEBSITE
+displayRecipes();
+
+</script>
+</body>
+</html>
